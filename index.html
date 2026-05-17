@@ -54,6 +54,8 @@
     img {
       display: block;
       max-width: 100%;
+      -webkit-user-drag: none;
+      user-select: none;
     }
 
     a {
@@ -651,7 +653,7 @@
   <header class="hero" aria-label="Michels Lighting Industries">
     <div class="hero-inner">
       <div class="hero-logo-crop">
-        <img class="hero-logo" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries logo">
+        <img class="hero-logo protected-image" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries logo" draggable="false">
       </div>
       <p class="brand-line">Michels Lighting Industries</p>
       <h1>AUDIO IN.<br>LIGHT OUT.</h1>
@@ -784,7 +786,7 @@
         <p>Private Independent Non-Profit Research Project</p>
         <p><a href="impressum.html">Impressum & Datenschutz</a></p>
       </div>
-      <img class="footer-logo" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries logo">
+      <img class="footer-logo protected-image" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries logo" draggable="false">
       <div>
         <p>Built by Casimir Michel</p>
         <p>Germany</p>
@@ -808,6 +810,11 @@
 
     document.querySelectorAll(".fade-section").forEach((section) => {
       observer.observe(section);
+    });
+
+    document.querySelectorAll(".protected-image").forEach((image) => {
+      image.addEventListener("contextmenu", (event) => event.preventDefault());
+      image.addEventListener("dragstart", (event) => event.preventDefault());
     });
 
     const form = document.querySelector("#contact-form");
