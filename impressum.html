@@ -6,6 +6,7 @@
   <meta name="description" content="Impressum und Datenschutzhinweise fuer MLI, ein privates unabhaengiges non-profit research project von Casimir Michel.">
   <meta property="og:title" content="MLI | Impressum & Datenschutz">
   <title>MLI | Impressum & Datenschutz</title>
+  <link rel="icon" href="src/mli_logo_ico.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
@@ -57,17 +58,10 @@
     }
 
     header {
-      display: grid;
-      grid-template-columns: 1fr;
-      justify-items: center;
-      gap: 22px;
-      padding-bottom: clamp(36px, 7vw, 74px);
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: 28px;
       border-bottom: 1px solid var(--white);
-      text-align: center;
-    }
-
-    .mark {
-      width: min(1280px, 98vw);
     }
 
     .back-link {
@@ -76,21 +70,6 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       white-space: nowrap;
-    }
-
-    @media (min-width: 768px) {
-      header {
-        grid-template-columns: 1fr auto 1fr;
-      }
-
-      header a:first-child {
-        grid-column: 2;
-      }
-
-      .back-link {
-        grid-column: 3;
-        justify-self: end;
-      }
     }
 
     h1 {
@@ -166,9 +145,6 @@
 <body>
   <div class="container">
     <header>
-      <a href="index.html" aria-label="Back to MLI homepage">
-        <img class="mark" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries logo">
-      </a>
       <a class="back-link" href="index.html">Back to site</a>
     </header>
 
