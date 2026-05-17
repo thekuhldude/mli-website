@@ -8,6 +8,7 @@
   <meta property="og:description" content="Audio in. Light out. A private independent non-profit research project for neural stage lighting generation from audio.">
   <meta property="og:type" content="website">
   <title>MLI | Michels Lighting Industries</title>
+  <link rel="icon" href="src/mli_logo_ico.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
@@ -94,23 +95,22 @@
     }
 
     .hero-logo-crop {
-      /* Change this width to resize the visible hero logo. */
-      width: clamp(220px, 16vw, 360px);
-      aspect-ratio: 536 / 340;
+      width: clamp(280px, 18vw, 430px);
+      aspect-ratio: 494 / 345;
       overflow: hidden;
-      margin: 0 auto 0;
+      margin: 0 auto 4px;
       flex: 0 0 auto;
       position: relative;
     }
 
     .hero-logo {
-      /* Crops the large source image to the actual white logo artwork. */
       position: absolute;
       left: 0;
       top: 0;
-      width: 576.866%;
+      width: 310.931%;
       max-width: none;
-      transform: translate(-37.775%, -35.139%);
+      height: auto;
+      transform: translate(-29.7%, -27.734%);
     }
 
     .brand-line {
@@ -501,7 +501,7 @@
     }
 
     footer {
-      border-top: 1px solid var(--white);
+      border-top: 1px solid var(--border);
       padding: 30px 0;
       color: var(--muted);
     }
@@ -529,7 +529,7 @@
     }
 
     .footer-logo {
-      width: 56px;
+      width: 72px;
       margin: 0 auto;
       opacity: 0.62;
     }
@@ -570,8 +570,7 @@
       }
 
       .hero-logo-crop {
-        /* Desktop hero logo size. */
-        width: clamp(300px, 16vw, 380px);
+        width: clamp(330px, 19vw, 480px);
       }
 
       .hero h1 {
