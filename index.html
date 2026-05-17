@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MLI is a private independent non-profit research project by Casimir Michel exploring neural audio-to-light synthesis for professional stage lighting design.">
+  <meta property="og:title" content="Michels Lighting Industries">
+  <meta property="og:description" content="Audio in. Light out. A private independent non-profit research project for neural stage lighting generation from audio.">
+  <meta property="og:type" content="website">
+  <title>MLI | Michels Lighting Industries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --surface: #0a0a0a;
+      --surface-2: #111111;
+      --border: #333333;
+      --white: #ffffff;
+      --text: #ffffff;
+      --muted: #b3b3b3;
+      --dim: #444444;
+      --ghost: #222222;
+      --max-width: 1160px;
+      --section-pad: clamp(72px, 10vw, 140px);
+      --display-font: "Orbitron", system-ui, sans-serif;
+      --body-font: "IBM Plex Sans", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--display-font);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--display-font);
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 48px 0 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-inner {
+      width: min(100% - 16px, 1900px);
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: heroIn 800ms ease forwards;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-logo-crop {
+      /* Change this width to resize the visible hero logo. */
+      width: clamp(220px, 16vw, 360px);
+      aspect-ratio: 536 / 340;
+      overflow: hidden;
+      margin: 0 auto 0;
+      flex: 0 0 auto;
+      position: relative;
+    }
+
+    .hero-logo {
+      /* Crops the large source image to the actual white logo artwork. */
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 576.866%;
+      max-width: none;
+      transform: translate(-37.775%, -35.139%);
+    }
+
+    .brand-line {
+      font-size: clamp(10px, 2.2vw, 14px);
+      font-weight: 900;
+      letter-spacing: 0.3em;
+      line-height: 1.7;
+      text-transform: uppercase;
+      margin-right: -0.3em;
+    }
+
+    .hero h1 {
+      margin-top: clamp(36px, 7vw, 76px);
+      font-size: clamp(54px, 10vw, 132px);
+      font-weight: 900;
+      line-height: 0.92;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-subline {
+      max-width: 780px;
+      margin: clamp(28px, 4vw, 42px) auto 0;
+      color: var(--muted);
+      font-family: var(--body-font);
+      font-size: clamp(12px, 2.6vw, 15px);
+      font-weight: 400;
+      line-height: 1.9;
+    }
+
+    .thin-rule {
+      width: min(520px, 68vw);
+      height: 1px;
+      margin: clamp(34px, 5vw, 54px) auto 0;
+      background: var(--white);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 26px;
+      width: 1px;
+      height: 38px;
+      background: var(--border);
+      transform: translateX(-50%);
+      overflow: hidden;
+    }
+
+    .scroll-indicator::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -16px;
+      width: 1px;
+      height: 16px;
+      background: var(--white);
+      animation: scrollMark 1.8s ease-in-out infinite;
+    }
+
+    main {
+      background: var(--bg);
+    }
+
+    section {
+      padding: var(--section-pad) 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: clamp(13px, 2vw, 17px);
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      margin-right: -0.26em;
+      text-transform: uppercase;
+      margin-bottom: clamp(36px, 6vw, 70px);
+    }
+
+    .fade-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .fade-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .vision-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 34px;
+    }
+
+    .vision-quote {
+      font-size: clamp(18px, 4.6vw, 30px);
+      line-height: 1.55;
+      font-weight: 400;
+      max-width: 700px;
+    }
+
+    .vision-copy {
+      display: grid;
+      gap: 22px;
+      color: var(--muted);
+      font-family: var(--body-font);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .pipeline {
+      position: relative;
+      display: grid;
+      gap: 0;
+    }
+
+    .pipeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 18px;
+      bottom: 18px;
+      width: 1px;
+      background: var(--white);
+    }
+
+    .step {
+      position: relative;
+      min-height: 180px;
+      padding: 0 0 48px 32px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .step:last-child {
+      padding-bottom: 0;
+    }
+
+    .step::before {
+      content: "";
+      position: absolute;
+      left: -4px;
+      top: 12px;
+      width: 9px;
+      height: 9px;
+      background: var(--white);
+    }
+
+    .pipeline.is-visible .step {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pipeline.is-visible .step:nth-child(1) { transition-delay: 80ms; }
+    .pipeline.is-visible .step:nth-child(2) { transition-delay: 180ms; }
+    .pipeline.is-visible .step:nth-child(3) { transition-delay: 280ms; }
+    .pipeline.is-visible .step:nth-child(4) { transition-delay: 380ms; }
+    .pipeline.is-visible .step:nth-child(5) { transition-delay: 480ms; }
+
+    .step-number {
+      display: none;
+    }
+
+    .step-title {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(18px, 3.4vw, 28px);
+      font-weight: 700;
+      line-height: 1.25;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .step-desc {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      color: var(--muted);
+      font-family: var(--body-font);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .status-card {
+      min-height: 260px;
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 220ms ease, background 220ms ease, transform 220ms ease;
+    }
+
+    .status-card:hover {
+      border-color: var(--white);
+      background: var(--surface-2);
+      transform: translateY(-2px);
+    }
+
+    .status-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .status-label {
+      margin: 26px 0;
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--white);
+      border-radius: 50%;
+      display: inline-block;
+      flex: 0 0 auto;
+    }
+
+    .dot.filled {
+      background: var(--white);
+    }
+
+    .dot.blink {
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    .status-card p {
+      color: var(--muted);
+      font-family: var(--body-font);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .contact-copy h2 {
+      max-width: 590px;
+      font-size: clamp(26px, 5.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.22;
+      text-transform: uppercase;
+    }
+
+    .contact-copy p {
+      margin-top: 28px;
+      max-width: 560px;
+      color: var(--muted);
+      font-family: var(--body-font);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .linkedin-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      margin-top: 34px;
+      padding: 0 22px;
+      border: 1px solid var(--white);
+      background: var(--bg);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 220ms ease, color 220ms ease;
+    }
+
+    .linkedin-button:hover,
+    .linkedin-button:focus-visible {
+      background: var(--white);
+      color: var(--bg);
+    }
+
+    .external-note,
+    .cookie-note {
+      margin-top: 18px;
+      color: var(--dim);
+      font-family: var(--body-font);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--surface);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-weight: 500;
+      padding: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      outline: none;
+      transition: border-color 200ms ease, background 200ms ease;
+    }
+
+    select {
+      appearance: none;
+      padding-right: 40px;
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--muted);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--white);
+      background: var(--surface-2);
+    }
+
+    .submit-button {
+      min-height: 52px;
+      border: 1px solid var(--white);
+      border-radius: 2px;
+      background: var(--white);
+      color: var(--bg);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: background 220ms ease, color 220ms ease;
+    }
+
+    .submit-button:hover,
+    .submit-button:focus-visible {
+      background: var(--bg);
+      color: var(--white);
+    }
+
+    .submit-button:disabled {
+      cursor: wait;
+      opacity: 0.72;
+    }
+
+    .form-status {
+      min-height: 18px;
+      color: var(--muted);
+      font-family: var(--body-font);
+      font-size: 10px;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    footer {
+      border-top: 1px solid var(--white);
+      padding: 30px 0;
+      color: var(--muted);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: center;
+      text-align: center;
+      font-size: 10px;
+      line-height: 1.9;
+      text-transform: uppercase;
+    }
+
+    footer a {
+      color: var(--white);
+      text-decoration: none;
+      transition: opacity 180ms ease;
+    }
+
+    footer a:hover,
+    footer a:focus-visible {
+      opacity: 0.72;
+    }
+
+    .footer-logo {
+      width: 56px;
+      margin: 0 auto;
+      opacity: 0.62;
+    }
+
+    @keyframes heroIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scrollMark {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(58px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        width: min(100% - 64px, var(--max-width));
+      }
+
+      .hero-logo-crop {
+        /* Desktop hero logo size. */
+        width: clamp(300px, 16vw, 380px);
+      }
+
+      .hero h1 {
+        font-size: clamp(68px, 8vw, 132px);
+      }
+
+      .vision-grid {
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        gap: clamp(48px, 7vw, 96px);
+        align-items: start;
+      }
+
+      .pipeline::before {
+        left: 78px;
+      }
+
+      .step {
+        min-height: 220px;
+        padding: 8px 0 66px 160px;
+      }
+
+      .step::before {
+        left: 74px;
+        top: 24px;
+      }
+
+      .step-number {
+        display: block;
+        position: absolute;
+        left: 110px;
+        top: -18px;
+        color: var(--ghost);
+        font-size: clamp(74px, 12vw, 150px);
+        font-weight: 900;
+        line-height: 1;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .step-title,
+      .step-desc {
+        margin-left: 64px;
+      }
+
+      .status-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .contact-grid {
+        grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.75fr);
+        gap: clamp(48px, 8vw, 104px);
+        align-items: start;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr auto 1fr;
+        text-align: left;
+      }
+
+      .footer-grid > div:last-child {
+        text-align: right;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 1ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" aria-label="Michels Lighting Industries">
+    <div class="hero-inner">
+      <div class="hero-logo-crop">
+        <img class="hero-logo" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries logo">
+      </div>
+      <p class="brand-line">Michels Lighting Industries</p>
+      <h1>AUDIO IN.<br>LIGHT OUT.</h1>
+      <p class="hero-subline">A private independent non-profit research project at the intersection of machine learning and professional stage lighting design.</p>
+      <div class="thin-rule" aria-hidden="true"></div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <section class="fade-section" id="vision">
+      <div class="container">
+        <h2 class="section-title">The Vision</h2>
+        <div class="vision-grid">
+          <p class="vision-quote">What if a lighting designer's years of experience could be encoded into a model — and used to generate a full light show from a single audio file?</p>
+          <div class="vision-copy">
+            <p>MLI is a private independent non-profit research project exploring neural audio-to-light synthesis. The goal: train a model that understands the relationship between sound and light the way a professional designer does.</p>
+            <p>Phase one focuses on learning brightness, energy, and beat-synchronization from real concert footage. Phase two will introduce synthetic training data generated by an LLM trained on professional lighting design literature.</p>
+            <p>This is not a finished product. This is research, documented openly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section" id="system">
+      <div class="container">
+        <h2 class="section-title">The System <span>(for the Proof-of-Concept)</span></h2>
+        
+        <div class="pipeline">
+          <article class="step">
+            <span class="step-number" aria-hidden="true">01</span>
+            <h3 class="step-title">Audio Analysis</h3>
+            <p class="step-desc">Raw audio → MFCC, beat detection, energy curves, structural segmentation, CLAP embeddings</p>
+          </article>
+          <article class="step">
+            <span class="step-number" aria-hidden="true">02</span>
+            <h3 class="step-title">Feature Extraction</h3>
+            <p class="step-desc">96 engineered features per frame, sampled at 30fps, synchronized with video ground truth</p>
+          </article>
+          <article class="step">
+            <span class="step-number" aria-hidden="true">03</span>
+            <h3 class="step-title">Sequence Modeling</h3>
+            <p class="step-desc">BiLSTM encoder processes temporal audio context. LSTM decoder generates frame-by-frame light grid predictions.</p>
+          </article>
+          <article class="step">
+            <span class="step-number" aria-hidden="true">04</span>
+            <h3 class="step-title">Grid Output</h3>
+            <p class="step-desc">12×8 RGB grid representing stage lighting state at every frame — brightness, color, spatial distribution</p>
+          </article>
+          <article class="step">
+            <span class="step-number" aria-hidden="true">05</span>
+            <h3 class="step-title">Synthetic Pipeline <span>(In Development)</span></h3>
+            <p class="step-desc">LLM-based lighting designer generates training data at scale. Stage layouts, fixture distributions, music-reactive cue lists — all synthetic, all labeled. Human training data remains essential for validation and real-world progression.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section" id="status">
+      <div class="container">
+        <h2 class="section-title">Current Status</h2>
+        <div class="status-grid">
+          <article class="status-card">
+            <div>
+              <h3>Training Data</h3>
+              <p class="status-label"><span class="dot filled blink" aria-hidden="true"></span> Active</p>
+            </div>
+            <p>96 real concert recordings processed. Synthetic pipeline in development. Target: 10,000+ training samples.</p>
+          </article>
+          <article class="status-card">
+            <div>
+              <h3>Model</h3>
+              <p class="status-label"><span class="dot filled" aria-hidden="true"></span> In Progress</p>
+            </div>
+            <p>CLAP + BiLSTM architecture. 3.3M trainable parameters. Beat-synchronization: functional. Style transfer: research phase.</p>
+          </article>
+          <article class="status-card">
+            <div>
+              <h3>Product</h3>
+              <p class="status-label"><span class="dot" aria-hidden="true"></span> Planned</p>
+            </div>
+            <p>Private independent non-profit research project moving toward a desktop application for lighting designers. Built to connect with every major professional lighting workflow and control environment. Target: late 2026 to mid 2027.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section" id="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-grid">
+          <div class="contact-copy">
+            <h2>Research inquiries, collaboration, data partnerships.</h2>
+            <p>If you work in professional lighting design and are interested in this private independent non-profit research project — or if you have access to lighting show recordings and would like to contribute to the research — reach out.</p>
+            <a class="linkedin-button" href="https://www.linkedin.com/in/casimir-michel-8b3426354" target="_blank" rel="noopener noreferrer">[ LinkedIn → ]</a>
+            <p class="external-note">External link disclaimer: LinkedIn is operated by LinkedIn Ireland Unlimited Company. MLI is not responsible for external content, data processing, tracking, availability, or changes on LinkedIn after leaving this website.</p>
+            <p class="cookie-note">This page does not set tracking cookies. The embedded contact form posts directly to Formspree only when submitted; external services may process technical request data under their own policies.</p>
+          </div>
+
+          <form id="contact-form" action="https://formspree.io/f/xredzdkn" method="POST">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="YOUR NAME" autocomplete="name" required>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="YOUR EMAIL" autocomplete="email" required>
+
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="Research Inquiry">Research Inquiry</option>
+              <option value="Data Partnership">Data Partnership</option>
+              <option value="General">General</option>
+            </select>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="YOUR MESSAGE" required></textarea>
+
+            <button class="submit-button" type="submit">Send Message</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <p>MLI © 2025</p>
+        <p>Private Independent Non-Profit Research Project</p>
+        <p><a href="impressum.html">Impressum & Datenschutz</a></p>
+      </div>
+      <img class="footer-logo" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries logo">
+      <div>
+        <p>Built by Casimir Michel</p>
+        <p>Germany</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          const pipeline = entry.target.querySelector(".pipeline");
+          if (pipeline) {
+            pipeline.classList.add("is-visible");
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    document.querySelectorAll(".fade-section").forEach((section) => {
+      observer.observe(section);
+    });
+
+    const form = document.querySelector("#contact-form");
+    const button = form.querySelector(".submit-button");
+    const status = form.querySelector(".form-status");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const originalText = button.textContent;
+      button.textContent = "SENDING...";
+      button.disabled = true;
+      status.textContent = "";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { "Accept": "application/json" }
+        });
+
+        if (!response.ok) {
+          throw new Error("Form submission failed");
+        }
+
+        button.textContent = "SENT";
+        status.textContent = "Message sent.";
+        form.reset();
+      } catch (error) {
+        button.textContent = originalText;
+        status.textContent = "Could not send. Please try again later.";
+      } finally {
+        setTimeout(() => {
+          button.disabled = false;
+          if (button.textContent === "SENT") {
+            button.textContent = originalText;
+          }
+        }, 2200);
+      }
+    });
+  </script>
+</body>
+</html>

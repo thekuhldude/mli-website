@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Impressum und Datenschutzhinweise fuer MLI, ein privates unabhaengiges non-profit research project von Casimir Michel.">
+  <meta property="og:title" content="MLI | Impressum & Datenschutz">
+  <title>MLI | Impressum & Datenschutz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --surface: #0a0a0a;
+      --border: #333333;
+      --white: #ffffff;
+      --text: #ffffff;
+      --muted: #b3b3b3;
+      --dim: #777777;
+      --display-font: "Orbitron", system-ui, sans-serif;
+      --body-font: "IBM Plex Sans", Arial, sans-serif;
+      --max-width: 1040px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--display-font);
+    }
+
+    body {
+      padding: clamp(28px, 6vw, 72px) 0;
+    }
+
+    a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      opacity: 0.72;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 22px;
+      padding-bottom: clamp(36px, 7vw, 74px);
+      border-bottom: 1px solid var(--white);
+      text-align: center;
+    }
+
+    .mark {
+      width: min(1280px, 98vw);
+    }
+
+    .back-link {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 768px) {
+      header {
+        grid-template-columns: 1fr auto 1fr;
+      }
+
+      header a:first-child {
+        grid-column: 2;
+      }
+
+      .back-link {
+        grid-column: 3;
+        justify-self: end;
+      }
+    }
+
+    h1 {
+      margin-top: clamp(46px, 8vw, 92px);
+      font-size: clamp(38px, 8vw, 92px);
+      font-weight: 900;
+      line-height: 0.98;
+      text-transform: uppercase;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-family: var(--body-font);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    main {
+      display: grid;
+      gap: 28px;
+      margin-top: clamp(48px, 8vw, 88px);
+    }
+
+    section {
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--surface);
+      padding: clamp(24px, 4vw, 42px);
+    }
+
+    h2 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      line-height: 1.5;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    p,
+    address {
+      color: var(--muted);
+      font-family: var(--body-font);
+      font-size: 14px;
+      font-style: normal;
+      line-height: 1.85;
+    }
+
+    p + p,
+    address + p {
+      margin-top: 16px;
+    }
+
+    .quiet {
+      color: var(--dim);
+      font-size: 12px;
+    }
+
+    footer {
+      margin-top: clamp(44px, 8vw, 80px);
+      padding-top: 28px;
+      border-top: 1px solid var(--white);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="index.html" aria-label="Back to MLI homepage">
+        <img class="mark" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries logo">
+      </a>
+      <a class="back-link" href="index.html">Back to site</a>
+    </header>
+
+    <h1>Impressum<br>& Datenschutz</h1>
+    <p class="intro">MLI - Michels Lighting Industries ist ein privates, unabhaengiges und nicht-kommerzielles Forschungsprojekt von Casimir Michel.</p>
+
+    <main>
+      <section aria-labelledby="impressum-title">
+        <h2 id="impressum-title">Impressum</h2>
+        <address>
+          Angaben gemaess § 5 DDG<br>
+          Casimir Michel<br>
+          Stintenberger Strasse 36<br>
+          40822 Mettmann<br>
+          Germany
+        </address>
+        <p>E-Mail: <a href="mailto:Casimir.Michel.123@outlook.de">Casimir.Michel.123@outlook.de</a><br>Telefon: <a href="tel:+4921042009857">02104 2009857</a></p>
+        <p>MLI - Michels Lighting Industries ist ein privates, unabhaengiges und nicht-kommerzielles Forschungsprojekt. Es handelt sich nicht um ein Unternehmen, keinen Online-Shop und kein kostenpflichtiges Angebot.</p>
+        <p>Verantwortlich fuer den Inhalt dieser Website: Casimir Michel, Anschrift wie oben.</p>
+      </section>
+
+      <section aria-labelledby="privacy-title">
+        <h2 id="privacy-title">Datennutzung Kontaktformular</h2>
+        <p>Wenn du das Kontaktformular nutzt, werden die von dir eingegebenen Daten - Name, E-Mail-Adresse, Betreff und Nachricht - an den Websitebetreiber uebermittelt, um deine Anfrage zu lesen und zu beantworten. Die Verarbeitung erfolgt ausschliesslich fuer diesen Zweck. Verantwortlicher fuer die Datenverarbeitung ist Casimir Michel, Anschrift und Kontaktdaten wie im Impressum angegeben.</p>
+        <p>Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. f DSGVO, das berechtigte Interesse an der Beantwortung eingehender Anfragen zu diesem Forschungsprojekt. Wenn deine Anfrage auf eine spaetere Zusammenarbeit oder Datenpartnerschaft gerichtet ist, kann zusaetzlich Art. 6 Abs. 1 lit. b DSGVO einschlaegig sein.</p>
+        <p>Das Formular wird ueber Formspree verarbeitet. Beim Absenden werden die Formularinhalte technisch an Formspree uebermittelt und anschliessend an den Websitebetreiber weitergeleitet. Ohne Absenden des Formulars werden ueber dieses Formular keine Inhalte uebertragen.</p>
+        <p>Die Daten werden nicht verkauft, nicht fuer Werbung genutzt und nicht an Dritte weitergegeben, ausser soweit dies fuer die technische Zustellung ueber Formspree oder zur Erfuellung gesetzlicher Pflichten erforderlich ist. Anfragen werden geloescht, sobald sie fuer die Bearbeitung nicht mehr erforderlich sind, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+        <p>Diese Website setzt keine eigenen Tracking-Cookies. Fuer die Darstellung der Schriftarten werden Google Fonts geladen; dabei koennen technische Verbindungsdaten wie die IP-Adresse an Google uebertragen werden. Beim Besuch externer Links, insbesondere LinkedIn, gelten die Datenschutz- und Nutzungsbedingungen des jeweiligen Anbieters.</p>
+        <p>Du kannst Auskunft, Berichtigung, Loeschung, Einschraenkung der Verarbeitung, Datenuebertragbarkeit und Widerspruch gegen die Verarbeitung deiner personenbezogenen Daten verlangen. Ausserdem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehoerde. Kontakt fuer Datenschutzanfragen: <a href="mailto:Casimir.Michel.123@outlook.de">Casimir.Michel.123@outlook.de</a>.</p>
+      </section>
+
+      <section aria-labelledby="external-title">
+        <h2 id="external-title">Externe Links</h2>
+        <p>Diese Website enthaelt Links zu externen Angeboten, insbesondere LinkedIn. Fuer Inhalte, Verfuegbarkeit, Datenschutz, Tracking oder spaetere Aenderungen externer Seiten ist ausschliesslich der jeweilige Anbieter verantwortlich.</p>
+        <p class="quiet">Stand: Mai 2026</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>MLI © 2025</p>
+      <p>Private Independent Non-Profit Research Project</p>
+    </footer>
+  </div>
+</body>
+</html>
