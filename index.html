@@ -172,6 +172,10 @@
       animation: scrollMark 1.8s ease-in-out infinite;
     }
 
+    .scroll-indicator.is-hidden {
+      display: none;
+    }
+
     main {
       background: var(--bg);
     }
@@ -637,12 +641,6 @@
       }
     }
 
-    @media (max-width: 1500px) and (max-height: 950px) {
-      .scroll-indicator {
-        display: none;
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -822,6 +820,27 @@
       image.addEventListener("contextmenu", (event) => event.preventDefault());
       image.addEventListener("dragstart", (event) => event.preventDefault());
     });
+
+    const thinRule = document.querySelector(".thin-rule");
+    const scrollIndicator = document.querySelector(".scroll-indicator");
+
+    const updateScrollIndicator = () => {
+      if (!thinRule || !scrollIndicator) {
+        return;
+      }
+
+      scrollIndicator.classList.remove("is-hidden");
+      const ruleRect = thinRule.getBoundingClientRect();
+      const indicatorRect = scrollIndicator.getBoundingClientRect();
+      const minimumGap = 18;
+      const hasCollision = indicatorRect.top < ruleRect.bottom + minimumGap;
+
+      scrollIndicator.classList.toggle("is-hidden", hasCollision);
+    };
+
+    window.addEventListener("load", updateScrollIndicator);
+    window.addEventListener("resize", updateScrollIndicator);
+    updateScrollIndicator();
 
     const form = document.querySelector("#contact-form");
     const button = form.querySelector(".submit-button");
