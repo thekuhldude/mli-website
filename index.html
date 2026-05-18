@@ -27,6 +27,10 @@
       --section-pad: clamp(72px, 10vw, 140px);
       --display-font: "Orbitron", system-ui, sans-serif;
       --body-font: "IBM Plex Sans", Arial, sans-serif;
+      --spot-x: 50vw;
+      --spot-y: 50vh;
+      --flash-x: 50vw;
+      --flash-y: 28vh;
     }
 
     * {
@@ -49,6 +53,55 @@
       font-family: var(--display-font);
       letter-spacing: 0;
       overflow-x: hidden;
+    }
+
+    .follow-spot,
+    .star-burst {
+      position: fixed;
+      pointer-events: none;
+      z-index: 20;
+      mix-blend-mode: screen;
+    }
+
+    .follow-spot {
+      left: var(--spot-x);
+      top: var(--spot-y);
+      width: clamp(260px, 26vw, 520px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle,
+          rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0.11) 22%,
+          rgba(255, 255, 255, 0.04) 46%,
+          rgba(255, 255, 255, 0) 72%);
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition: opacity 240ms ease;
+      will-change: left, top, opacity;
+    }
+
+    body.spot-active .follow-spot {
+      opacity: 0.92;
+    }
+
+    .star-burst {
+      left: var(--flash-x);
+      top: var(--flash-y);
+      width: min(155vmax, 1800px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 0.68) 4%,
+          rgba(255, 255, 255, 0.24) 17%,
+          rgba(255, 255, 255, 0.07) 34%,
+          rgba(255, 255, 255, 0) 62%);
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.04);
+      animation: starFlash 820ms cubic-bezier(0.16, 0.86, 0.26, 1) 220ms both;
+      will-change: transform, opacity;
     }
 
     img {
@@ -561,6 +614,29 @@
       }
     }
 
+    @keyframes starFlash {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.04);
+      }
+      13% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.5);
+      }
+      36% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      68% {
+        opacity: 0.16;
+        transform: translate(-50%, -50%) scale(0.18);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.035);
+      }
+    }
+
     @keyframes blink {
       0%, 100% {
         opacity: 1;
@@ -641,7 +717,18 @@
       }
     }
 
+    @media (pointer: coarse) {
+      .follow-spot {
+        display: none;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
+      .follow-spot,
+      .star-burst {
+        display: none;
+      }
+
       *,
       *::before,
       *::after {
@@ -654,6 +741,9 @@
   </style>
 </head>
 <body>
+  <div class="follow-spot" aria-hidden="true"></div>
+  <div class="star-burst" aria-hidden="true"></div>
+
   <header class="hero" aria-label="Michels Lighting Industries">
     <div class="hero-inner">
       <div class="hero-logo-crop">
@@ -841,6 +931,57 @@
     window.addEventListener("load", updateScrollIndicator);
     window.addEventListener("resize", updateScrollIndicator);
     updateScrollIndicator();
+
+    const root = document.documentElement;
+    const logoCrop = document.querySelector(".hero-logo-crop");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const finePointer = window.matchMedia("(pointer: fine)");
+
+    const updateFlashOrigin = () => {
+      if (!logoCrop) {
+        return;
+      }
+
+      const rect = logoCrop.getBoundingClientRect();
+      root.style.setProperty("--flash-x", `${rect.left + rect.width * 0.79}px`);
+      root.style.setProperty("--flash-y", `${rect.top + rect.height * 0.25}px`);
+    };
+
+    updateFlashOrigin();
+    window.addEventListener("load", updateFlashOrigin);
+    window.addEventListener("resize", updateFlashOrigin);
+
+    let spotFrame = 0;
+    let spotX = window.innerWidth / 2;
+    let spotY = window.innerHeight / 2;
+
+    const paintFollowSpot = () => {
+      root.style.setProperty("--spot-x", `${spotX}px`);
+      root.style.setProperty("--spot-y", `${spotY}px`);
+      spotFrame = 0;
+    };
+
+    const moveFollowSpot = (event) => {
+      if (!finePointer.matches || reducedMotion.matches || event.pointerType === "touch") {
+        return;
+      }
+
+      spotX = event.clientX;
+      spotY = event.clientY;
+      document.body.classList.add("spot-active");
+
+      if (!spotFrame) {
+        spotFrame = window.requestAnimationFrame(paintFollowSpot);
+      }
+    };
+
+    document.addEventListener("pointermove", moveFollowSpot, { passive: true });
+    document.addEventListener("mouseleave", () => {
+      document.body.classList.remove("spot-active");
+    });
+    window.addEventListener("blur", () => {
+      document.body.classList.remove("spot-active");
+    });
 
     const form = document.querySelector("#contact-form");
     const button = form.querySelector(".submit-button");
