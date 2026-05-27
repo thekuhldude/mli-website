@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Replace YOUR_DOMAIN_HERE with the final live domain before publishing.
 Sitemap: https://michels-lighting-industries.com/sitemap.xml
