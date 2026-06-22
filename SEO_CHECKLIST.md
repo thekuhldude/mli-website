@@ -20,12 +20,15 @@ https://michels-lighting-industries.com/
    - `Casimir Veranstaltungstechnik`
    - `Michel Veranstaltungstechnik`
    - `Michels Lighting Industries`
+   - `MLI`
+   - `AI stage lighting`
+   - `AI lighting design`
 
 ## Content Signals Already Added
 
-- Page title references `Casimir Michel`.
-- Meta description references `Casimir Michel`, `Mettmann`, `Veranstaltungstechnik`, stage lighting, and machine learning.
-- Visible page text references `Casimir Michel`, `Mettmann`, and `Veranstaltungstechnik`.
+- Page title references `MLI`, `AI Stage Lighting Research`, and `Casimir Michel`.
+- Meta description references `MLI`, `Michels Lighting Industries`, `AI stage lighting`, `Casimir Michel`, `Mettmann`, `Veranstaltungstechnik`, and machine learning.
+- Visible page text references `MLI`, `Michels Lighting Industries`, `AI stage lighting`, `Casimir Michel`, `Mettmann`, and `Veranstaltungstechnik`.
 - JSON-LD structured data describes Casimir Michel as the person behind MLI.
 - `robots.txt` allows crawling.
 - `sitemap.xml` lists the homepage and imprint/privacy page.
@@ -37,3 +40,4 @@ https://michels-lighting-industries.com/
 - Get a few real external links from relevant pages, for example lighting, event technology, research, or local Mettmann profiles.
 - Keep the name spelling consistent: `Casimir Michel`.
 - Add more public project updates over time if the site grows beyond one page.
+- Avoid keyword stuffing. Add search terms only where they naturally describe the project.
