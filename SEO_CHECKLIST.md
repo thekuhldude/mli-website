@@ -23,13 +23,16 @@ https://michels-lighting-industries.com/
    - `MLI`
    - `AI stage lighting`
    - `AI lighting design`
+   - `automated stage lighting`
+   - `audio reactive lighting`
+   - `audio-to-light research`
 
 ## Content Signals Already Added
 
-- Page title references `MLI`, `AI Stage Lighting Research`, and `Casimir Michel`.
-- Meta description references `MLI`, `Michels Lighting Industries`, `AI stage lighting`, `Casimir Michel`, `Mettmann`, `Veranstaltungstechnik`, and machine learning.
-- Visible page text references `MLI`, `Michels Lighting Industries`, `AI stage lighting`, `Casimir Michel`, `Mettmann`, and `Veranstaltungstechnik`.
-- JSON-LD structured data describes Casimir Michel as the person behind MLI.
+- Page title references `MLI`, `AI Stage Lighting`, and `Audio-to-Light Research`.
+- Meta description references `MLI`, `Michels Lighting Industries`, `AI stage lighting`, `audio-to-light`, automated lighting design, live shows, and Veranstaltungstechnik.
+- Visible page text references `MLI`, `Michels Lighting Industries`, `AI stage lighting`, `audio-to-light`, `audio-reactive lighting`, automated stage lighting, Casimir Michel, Mettmann, and Veranstaltungstechnik.
+- JSON-LD structured data describes Casimir Michel, the MLI research project, and the Michels Lighting Industries organization entity.
 - `robots.txt` allows crawling.
 - `sitemap.xml` lists the homepage and imprint/privacy page.
 

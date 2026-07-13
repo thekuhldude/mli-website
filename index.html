@@ -3,19 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MLI, Michels Lighting Industries, is a private independent AI stage lighting research project by Casimir Michel from Mettmann, Germany, exploring machine learning for professional lighting design and Veranstaltungstechnik.">
+  <meta name="description" content="MLI (Michels Lighting Industries) is Casimir Michel's independent AI stage lighting and audio-to-light research project for automated lighting design, live shows, and Veranstaltungstechnik.">
   <meta name="author" content="Casimir Michel">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="MLI | AI Stage Lighting Research | Casimir Michel">
-  <meta property="og:description" content="MLI is a private independent AI stage lighting research project by Casimir Michel from Mettmann, Germany, exploring neural audio-to-light synthesis for professional lighting design and Veranstaltungstechnik.">
+  <meta property="og:title" content="MLI | AI Stage Lighting & Audio-to-Light Research">
+  <meta property="og:description" content="MLI is Casimir Michel's independent AI stage lighting and audio-to-light research project for automated lighting design, live shows, and Veranstaltungstechnik.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="src/mli_logo_nobg.png">
-  <title>MLI | AI Stage Lighting Research | Casimir Michel</title>
+  <title>MLI | AI Stage Lighting & Audio-to-Light Research</title>
   <link rel="icon" href="src/mli_logo_ico.ico" type="image/x-icon">
   <link rel="canonical" href="https://michels-lighting-industries.com/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -38,14 +35,56 @@
             "professional stage lighting",
             "AI stage lighting",
             "artificial intelligence for lighting design",
+            "automated stage lighting",
+            "audio-reactive lighting",
             "lighting design",
             "machine learning",
             "audio analysis",
             "neural audio-to-light synthesis"
           ],
           "worksFor": {
-            "@id": "https://michels-lighting-industries.com/#mli"
+            "@id": "https://michels-lighting-industries.com/#organization"
           }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://michels-lighting-industries.com/#organization",
+          "name": "Michels Lighting Industries",
+          "alternateName": [
+            "MLI",
+            "Michel Lighting Industries",
+            "MLI AI Stage Lighting",
+            "Michels Lighting Industries AI Stage Lighting"
+          ],
+          "url": "https://michels-lighting-industries.com/",
+          "logo": "https://michels-lighting-industries.com/src/mli_logo_nobg.png",
+          "description": "Michels Lighting Industries, also known as MLI, is an independent AI stage lighting and audio-to-light research project by Casimir Michel.",
+          "founder": {
+            "@id": "https://michels-lighting-industries.com/#casimir-michel"
+          },
+          "foundingLocation": {
+            "@type": "Place",
+            "name": "Mettmann, Germany"
+          },
+          "knowsAbout": [
+            "AI stage lighting",
+            "artificial intelligence stage lighting",
+            "AI lighting design",
+            "automated stage lighting",
+            "audio-reactive lighting",
+            "audio-to-light research",
+            "professional stage lighting",
+            "Veranstaltungstechnik"
+          ],
+          "keywords": [
+            "MLI",
+            "Michels Lighting Industries",
+            "AI stage lighting",
+            "audio-to-light",
+            "automated stage lighting",
+            "AI lighting design",
+            "Veranstaltungstechnik"
+          ]
         },
         {
           "@type": "ResearchProject",
@@ -56,11 +95,13 @@
             "MLI Research",
             "MLI AI Stage Lighting",
             "AI Stage Lighting Research",
+            "Audio-to-Light Research",
+            "Automated Stage Lighting Research",
             "Casimir Michel Veranstaltungstechnik",
             "Michel Veranstaltungstechnik"
           ],
           "url": "https://michels-lighting-industries.com/",
-          "description": "MLI, Michels Lighting Industries, is a private independent AI stage lighting research project by Casimir Michel from Mettmann, Germany. The project explores neural audio-to-light synthesis for professional lighting design and Veranstaltungstechnik.",
+          "description": "MLI, Michels Lighting Industries, is a private independent AI stage lighting and audio-to-light research project by Casimir Michel from Mettmann, Germany. The project explores machine learning for professional lighting design, automated stage lighting, and Veranstaltungstechnik.",
           "founder": {
             "@id": "https://michels-lighting-industries.com/#casimir-michel"
           },
@@ -71,6 +112,8 @@
             "AI stage lighting",
             "artificial intelligence stage lighting",
             "AI lighting design",
+            "automated stage lighting",
+            "audio-reactive lighting",
             "stage lighting",
             "audio-to-light",
             "machine learning"
@@ -79,10 +122,10 @@
         {
           "@type": "WebSite",
           "@id": "https://michels-lighting-industries.com/#website",
-          "name": "MLI | AI Stage Lighting Research",
+          "name": "MLI | AI Stage Lighting & Audio-to-Light Research",
           "url": "https://michels-lighting-industries.com/",
           "publisher": {
-            "@id": "https://michels-lighting-industries.com/#casimir-michel"
+            "@id": "https://michels-lighting-industries.com/#organization"
           },
           "inLanguage": "en"
         }
@@ -90,6 +133,22 @@
     }
   </script>
   <style>
+    @font-face {
+      font-family: "Orbitron";
+      src: url("src/fonts/Orbitron-wght.ttf") format("truetype");
+      font-weight: 400 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "IBM Plex Sans";
+      src: url("src/fonts/IBMPlexSans-wdth-wght.ttf") format("truetype");
+      font-weight: 400 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       --bg: #000000;
       --surface: #0a0a0a;
@@ -824,11 +883,11 @@
   <header class="hero" aria-label="Michels Lighting Industries">
     <div class="hero-inner">
       <div class="hero-logo-crop">
-        <img class="hero-logo protected-image" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries logo" draggable="false">
+        <img class="hero-logo protected-image" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries MLI logo" draggable="false">
       </div>
       <p class="brand-line">Michels Lighting Industries</p>
       <h1>AUDIO IN.<br>LIGHT OUT.</h1>
-      <p class="hero-subline">MLI is a private independent AI stage lighting research project by Casimir Michel from Mettmann, Germany, at the intersection of machine learning, Veranstaltungstechnik, and professional lighting design.</p>
+      <p class="hero-subline">MLI is a private independent AI stage lighting and audio-to-light research project by Casimir Michel from Mettmann, Germany, at the intersection of machine learning, Veranstaltungstechnik, automated lighting design, and professional show control.</p>
       <div class="thin-rule" aria-hidden="true"></div>
     </div>
     <div class="scroll-indicator" aria-hidden="true"></div>
@@ -841,7 +900,7 @@
         <div class="vision-grid">
           <p class="vision-quote">What if a lighting designer's years of experience could be encoded into a model — and used to generate a full light show from a single audio file?</p>
           <div class="vision-copy">
-            <p>MLI, short for Michels Lighting Industries, is a private independent AI stage lighting research project exploring neural audio-to-light synthesis. The goal: study whether a model can learn meaningful relationships between music and lighting design without reducing the craft to beat matching or visual effects.</p>
+            <p>MLI, short for Michels Lighting Industries, is a private independent AI stage lighting research project exploring neural audio-to-light synthesis, audio-reactive lighting, and automated stage lighting for live show contexts. The goal: study whether a model can learn meaningful relationships between music and lighting design without reducing the craft to beat matching or visual effects.</p>
             <p>Current work is built around real concert recordings and careful evaluation. The central challenge is data: professional lighting shows are context-dependent, inconsistently documented, and difficult to compare cleanly. That challenge is part of the research question.</p>
             <p>This is not a finished product. This is research only for now, documented with methodological honesty over hype.</p>
           </div>
@@ -857,12 +916,12 @@
           <article class="step">
             <span class="step-number" aria-hidden="true">01</span>
             <h3 class="step-title">Research Question</h3>
-            <p class="step-desc">Can an audio file contain enough musical information to guide lighting decisions that feel intentional, structured, and usable in a professional show context?</p>
+            <p class="step-desc">Can an audio file contain enough musical information to guide AI stage lighting decisions that feel intentional, structured, and usable in a professional show context?</p>
           </article>
           <article class="step">
             <span class="step-number" aria-hidden="true">02</span>
             <h3 class="step-title">Music Analysis</h3>
-            <p class="step-desc">Audio is analysed for musical structure: rhythm, energy, frequency ranges, transitions, and larger changes over time. The exact feature strategy is intentionally not disclosed.</p>
+            <p class="step-desc">Audio is analysed for musical structure: rhythm, energy, frequency ranges, transitions, and larger changes over time. This is the foundation for audio-reactive lighting research, but the exact feature strategy is intentionally not disclosed.</p>
           </article>
           <article class="step">
             <span class="step-number" aria-hidden="true">03</span>
@@ -901,7 +960,7 @@
               <h3>Product</h3>
               <p class="status-label"><span class="dot" aria-hidden="true"></span> Planned</p>
             </div>
-            <p>Independent research that may later inform tools for lighting designers. Any future interface will focus on connecting research outputs to professional lighting workflows. Target: late 2026 to mid 2027.</p>
+            <p>Independent research that may later inform tools for lighting designers. Any future interface will focus on connecting AI-assisted lighting research outputs to professional lighting workflows. Target: late 2026 to mid 2027.</p>
           </article>
         </div>
       </div>
@@ -952,7 +1011,7 @@
         <p>Private Independent Research Project</p>
         <p><a href="impressum.html">Impressum & Datenschutz</a></p>
       </div>
-      <img class="footer-logo protected-image" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries logo" draggable="false">
+      <img class="footer-logo protected-image" src="src/mli_logo_nobg.png" alt="Michels Lighting Industries MLI logo" draggable="false">
       <div>
         <p>Built by Casimir Michel</p>
         <p>Mettmann, Germany</p>
