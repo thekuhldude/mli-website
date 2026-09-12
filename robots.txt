@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://michels-lighting-industries.com/sitemap.xml
+Sitemap: https://www.mli-research.com/sitemap.xml
